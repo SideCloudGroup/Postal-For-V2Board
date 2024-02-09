@@ -7,12 +7,12 @@
 
 ## 安装
 
-下载源码并解压，将目录下的所有文件复制（替换）到V2Board根目录下 \
-在V2Board网站根目录下执行以下命令
-
-```bash
-composer require postal/postal
-```
+1. 下载文件[SendEmailJob.php](https://github.com/SideCloudGroup/Postal-For-V2Board/raw/main/app/Jobs/SendEmailJob.php)
+   ，替换V2Board目录下的`/app/Jobs/SendEmailJob.php` \
+2. 在V2Board网站根目录下执行以下命令
+    ```bash
+    composer require postal/postal
+    ```
 
 ## 配置
 
