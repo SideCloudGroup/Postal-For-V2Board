@@ -50,13 +50,15 @@ class SendEmailJob implements ShouldQueue
         $params = $this->params;
         $email = $params['email'];
         $subject = $params['subject'];
+        $senderName = Config::get('mail.from.name');
+        $senderAddress = Config::get('mail.from.address');
         $params['template_name'] = 'mail.' . config('v2board.email_template', 'default') . '.' . $params['template_name'];
         try {
             $client = new Client(Config::get('mail.host'), Config::get('mail.password'));
             $message = new Message();
             $message->to($email);
-            $message->from(Config::get('mail.from.address'));
-            $message->sender(Config::get('mail.from.name'));
+            $message->from("$senderName <$senderAddress>");
+            $message->sender($senderAddress);
             $message->subject($subject);
             $message->htmlBody(view($params['template_name'], $params['template_value'])->render());
             $client->send->message($message);
